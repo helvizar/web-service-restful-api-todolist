@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
-const url = 'mongodb+srv://helvizar:helvizar@cluster0.hmyhrob.mongodb.net/';
+const url =
+  'mongodb+srv://helvizar:helvizar@cluster0.hmyhrob.mongodb.net/Todo_List';
 const ConnectionDB = async () => {
   try {
     const Connect = await mongoose.connect(url);
