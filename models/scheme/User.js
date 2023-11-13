@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
-var userSchema = new mongoose.Schema(
+const userSchema = new mongoose.Schema(
   {
+    id: { type: String, unique: true },
     fullname: {
       type: String,
       required: true,
@@ -25,8 +26,10 @@ var userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-userSchema.index({ username: 1 }, { unique: true });
-userSchema.index({ email: 1 }, { unique: true });
+userSchema.pre('save', function (next) {
+  this.id = this.username; // Ubah id jadi username
+  next();
+});
 
 const User = mongoose.model('User', userSchema);
 
