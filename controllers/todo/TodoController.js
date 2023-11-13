@@ -1,11 +1,11 @@
-const Todo = require('../../models/scheme/TodoList');
+const TodoModel = require('../../models/scheme/TodoList');
 
 async function createTodo(req, res) {
   try {
-    const { userId, task } = req.body;
+    const { task } = req.body;
 
     // Buat todo baru dan simpan ke database
-    const newTodo = await Todo.create({ userId, task });
+    const newTodo = await TodoModel.create({ task });
 
     res.status(201).json(newTodo);
   } catch (error) {
@@ -17,7 +17,7 @@ async function createTodo(req, res) {
 async function getAllTodos(req, res) {
   try {
     // Get semua todo dari database
-    const todos = await Todo.find();
+    const todos = await TodoModel.find();
 
     res.json(todos);
   } catch (error) {
@@ -29,7 +29,7 @@ async function getAllTodos(req, res) {
 async function getTodoById(req, res) {
   try {
     const { id } = req.params;
-    const getDetailDataTodoList = await Todo.findOne({ _id: id });
+    const getDetailDataTodoList = await TodoModel.findOne({ _id: id });
 
     if (!getDetailDataTodoList) {
       res.status(404).json({
@@ -64,7 +64,7 @@ async function updateTodo(req, res) {
       updated_date: new Date(),
     };
 
-    const updatedTodoList = await Todo.findByIdAndUpdate(
+    const updatedTodoList = await TodoModel.findByIdAndUpdate(
       id,
       updateTodoListData,
       { new: true }
@@ -98,7 +98,7 @@ async function deleteTodo(req, res) {
   try {
     const { id } = req.params;
 
-    const deleteTodoListData = await Todo.findByIdAndDelete(id);
+    const deleteTodoListData = await TodoModel.findByIdAndDelete(id);
 
     if (!deleteTodoListData) {
       res.status(404).json({
@@ -127,7 +127,7 @@ async function deleteTodo(req, res) {
 async function deleteAllTodos(req, res) {
   try {
     // Hapus semua todo dari database
-    const deletedTodos = await Todo.deleteMany();
+    const deletedTodos = await TodoModel.deleteMany();
 
     res.json(deletedTodos);
   } catch (error) {
