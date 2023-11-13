@@ -5,13 +5,13 @@ Welcome to the TodoList API documentation! Below, you'll discover the magic of m
 **Important Note:** This API is designed to be interacted with using tools like Postman, as there is currently no graphical user interface available.
 
 If you prefer a hassle-free experience, alternatively, you can download the pre-configured Postman collection:
-[Todo API Collection](https://github.com/helvizar/cloud/files/13339927/Express.Todo.Api.postman_collection.json)
+[Todo API Collection](https://github.com/helvizar/cloud/files/13339927/Express.Todo.Api.postman_collection.json).
 Import it into your Postman application and start managing your todos effortlessly! 🚀
 
 ## Register User ✨
 
 - **Method:** `POST`
-- **URL:** `https://express-todolist-api.cyclic.app/register`
+- **URL:** `https://express-todolist-api.cyclic.app/auth/register`
 - **Body (raw JSON):**
 
 ```
@@ -24,7 +24,7 @@ Import it into your Postman application and start managing your todos effortless
 ## Login 🚪
 
 - **Method:** `POST`
-- **URL:** `https://express-todolist-api.cyclic.app/login`
+- **URL:** `https://express-todolist-api.cyclic.app/auth/login`
 - **Body (raw JSON):**
 
 ```
@@ -35,10 +35,10 @@ Import it into your Postman application and start managing your todos effortless
 ## Create Todo 📝
 
 **Note:**
-To interact with the API, use a tool like Postman. Follow the instructions below to manage your todos effectively.
+To interact with the API, use a tool like Postman. Follow the instructions below to manage your todos effectively. Make sure to include the Bearer token in the Authorization header for authentication.
 
 - **Method:** `POST`
-- **URL:** `https://express-todolist-api.cyclic.app/todos`
+- **URL:** `https://express-todolist-api.cyclic.app/todos` 
 - **Body (raw JSON):**
 
 ```
